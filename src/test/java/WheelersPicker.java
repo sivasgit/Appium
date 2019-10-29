@@ -1,14 +1,14 @@
-
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import java.net.MalformedURLException;
 import java.net.URL;
-
+import java.util.List;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 
 
-public class AlertsIOS {
+public class WheelersPicker {
 
 
     public static void main(String[] args) throws MalformedURLException {
@@ -25,9 +25,16 @@ public class AlertsIOS {
         IOSDriver driver = new IOSDriver(url , dc);
 
         //to find element with the name
-        driver.findElementByAccessibilityId("alert").click();
-        driver.findElementByAccessibilityId("ok").click();
-        driver.findElementByAccessibilityId("ok").click();
+        driver.findElementByAccessibilityId("wheeler").click();
+        List <WebElement> values = driver.findElementsById("wheels");
+        String val1 = values.get(0).getAttribute("value");
+        String val2 = values.get(1).getAttribute("value");
+        String val3 = values.get(2).getAttribute("value");
+        System.out.println(val1 + " " + val2 + " " + val3);
+        //input the values
+        values.get(0).sendKeys("20");
+        values.get(1).sendKeys("100");
+        values.get(2).sendKeys("300");
 
     }
 
